@@ -27,7 +27,7 @@ func getEmployee(c *gin.Context) {
 
 	cursor, err := collect.Find(option, nil)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "error for creating the collection"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "error"})
 		return
 	}
 	defer func(cursor *mongo.Cursor, ctx context2.Context) {
@@ -85,7 +85,7 @@ func createEmployee(c *gin.Context) {
 
 	_, err := collect.InsertOne(ctx, employee)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to insert it to teh collection"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to insert it to the collection"})
 		return
 	}
 
